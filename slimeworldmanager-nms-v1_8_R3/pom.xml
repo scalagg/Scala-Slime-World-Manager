@@ -3,7 +3,7 @@
     <parent>
         <artifactId>slimeworldmanager</artifactId>
         <groupId>com.grinderwolf</groupId>
-        <version>2.2.0-SNAPSHOT</version>
+        <version>2.2.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <properties>
@@ -29,7 +29,8 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/tropic-spigot-server-1.5.3-remapped.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.grinderwolf</groupId>

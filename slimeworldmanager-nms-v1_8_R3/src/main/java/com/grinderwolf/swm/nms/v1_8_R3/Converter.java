@@ -96,7 +96,8 @@ public class Converter {
                 NBTTagCompound originalCompound = ((NBTTagCompound) base);
                 CompoundTag compound = new CompoundTag(name, new CompoundMap());
 
-                for (String key : originalCompound.c()) {
+                for (Object _key : originalCompound.c()) {
+                    String key = (String) _key;
                     compound.getValue().put(key, convertTag(key, originalCompound.get(key)));
                 }
 

@@ -7,6 +7,7 @@ import com.grinderwolf.swm.nms.SlimeNMS;
 import lombok.Getter;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 import net.minecraft.server.v1_8_R3.WorldServer;
+import net.minecraft.server.v1_8_R3.WorldSettings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
@@ -67,21 +68,7 @@ public class v1_8_R3SlimeNMS implements SlimeNMS {
         CustomDataManager dataManager = new CustomDataManager(world);
         MinecraftServer mcServer = MinecraftServer.getServer();
 
-        int dimension = CraftWorld.CUSTOM_DIMENSION_OFFSET + mcServer.worlds.size();
-        boolean used = false;
-
-        do {
-            for (WorldServer server : mcServer.worlds) {
-                used = server.dimension == dimension;
-
-                if (used) {
-                    dimension++;
-                    break;
-                }
-            }
-        } while (used);
-
-        return new CustomWorldServer((CraftSlimeWorld) world, dataManager, dimension);
+        return new CustomWorldServer((CraftSlimeWorld) world, dataManager, mcServer.getNewDimension());
     }
 
     @Override
